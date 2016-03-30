@@ -250,9 +250,9 @@ para|
      <para>
       Some of the following mappings use &lt;localleader&gt; key before the
       mapping itself. It is backslash '<literal>\</literal>' by default. You
-      can, however, change it to any other key in your
-      <filename>~/.vimrc</filename> file. For example to change it to a
-      comma '<literal>,</literal>', insert the following line
+      can, however, change it to any other key in your &vimrc; file. For
+      example to change it to a comma '<literal>,</literal>', insert the
+      following line
      </para>
 <screen>let maplocalleader = ","</screen>
      <para>
@@ -620,8 +620,7 @@ para2&lt;/para&gt;</screen>
      <para>
       Because <menuchoice><guimenu>CTRL</guimenu><guimenu>x</guimenu>
       <guimenu>CTRL</guimenu><guimenu>o</guimenu></menuchoice> is awkward, I
-      suggest you to remap it in your <filename>~/.vimrc</filename> to for
-      example
+      suggest you to remap it in your &vimrc; to for example
       <menuchoice><guimenu>CTRL</guimenu><guimenu>SPACE</guimenu></menuchoice>
       adding the following lines for XML and DocBook file types:
      </para>
@@ -663,7 +662,7 @@ para2&lt;/para&gt;</screen>
 
   <para>
    To add a shortcut to this script to &vi;, add (and customized) this line
-   to your <filename>.vimrc</filename> file:
+   to your &vimrc; file:
   </para>
 
 <screen>nnoremap &lt;silent> _e :!update_docbook_entities.pl xml/entity-decl.ent ~/.vim/autoload/xml/docbook5.vim&lt;CR>&lt;CR></screen>
@@ -687,8 +686,7 @@ para2&lt;/para&gt;</screen>
 <screen>:set spell spelllang=en</screen>
 
   <para>
-   on the &vi; command line, or put it in your <filename>.vimrc</filename>
-   file:
+   on the &vi; command line, or put it in your &vimrc; file:
   </para>
 
 <screen>autocmd FileType xml,docbk set spell spelllang=en</screen>
