@@ -1,0 +1,12 @@
+<!ENTITY vi       "Vim">
+<!ENTITY vimrc    "&lt;filename&gt;~/.vimrc&lt;/filename&gt;">
+
+
+
+<!-- other entity includes -->
+<!ENTITY % sgml.features "IGNORE">
+<!ENTITY % xml.features "INCLUDE">
+<!ENTITY % dbcent PUBLIC "-//OASIS//ENTITIES DocBook Character
+  Entities V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/dbcentx.mod">
+    %dbcent;
