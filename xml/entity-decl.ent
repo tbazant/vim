@@ -1,5 +1,5 @@
-<!ENTITY vi       "Vim">
-<!ENTITY vimrc    "&lt;filename&gt;~/.vimrc&lt;/filename&gt;">
+<!ENTITY vi       'Vim'>
+<!ENTITY vimrc    '<filename xmlns="http://docbook.org/ns/docbook">~/.vimrc</filename>'>
 
 
 
