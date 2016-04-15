@@ -1,0 +1,11 @@
+How to build and pus new HTML versionfrom XML sources
+-----------------------------------------------------
+
+git co master 
+daps -d DC-vim html --single
+rm -rf /tmp/vim/*
+cp -r build/vim/single-html/vim/* /tmp/vim
+git co gh-pages
+cp -r /tmp/vim/* .
+git ci -am 'new html build'
+git push
