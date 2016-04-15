@@ -30,6 +30,7 @@ MAIN="MAIN-vim.xml"
 ## (if not defined, the DocBook stylesheets will be used)
 ##
 #STYLEROOT=""
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2013"
 #FALLBACK_STYLEROOT=""
 #HTML_CSS=""
 #EPUB_CSS=""
