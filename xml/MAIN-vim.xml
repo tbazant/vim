@@ -11,6 +11,7 @@
   </author>
  </info>
  <xi:include href="intro.xml" parse="xml"/>
+ <xi:include href="vimplug.xml" parse="xml"/>
  <xi:include href="fugitive.xml" parse="xml"/>
  <xi:include href="xml.xml" parse="xml"/>
 </book>

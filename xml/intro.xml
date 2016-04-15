@@ -7,7 +7,7 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="cha.vim.intro">
  <title>Making &vi; Comfortable</title>
  <para></para>
- <sect1>
+ <sect1 xml:id="vim.intro.vimrc">
   <title>Useful &vi; Settings</title>
 
   <para>
@@ -46,5 +46,31 @@ set number</screen>
 <screen>" switch the tabs with SHIFT + &lt; or &gt;
 map &lt;S-Right&gt; :tabnext&lt;CR&gt;
 map &lt;S-Left&gt; :tabprevious&lt;CR&gt;</screen>
+ </sect1>
+ <sect1 xml:id="vim.intro.plugins">
+  <title>&vi; Plug-ins</title>
+
+  <para>
+   Although &vi; is a full featured editing environment in its core
+   installation, you will probably want to extend its functionality after
+   some time. Either to do specific tasks more easily, or to teach it brand
+   new features. And this is where &vi; plug-ins take part.
+  </para>
+
+  <para>
+   There are thousands of &vi; plugins available online. A good place to
+   start searching around is for example
+   <link xlink:href="http://vimawesome.com"/>. There you can filter the list
+   of viewed plug-ins by categories and tags. Installation instructions are
+   presented for each plugin as well.
+  </para>
+
+  <para>
+   Manual installation of plug-ins seems to be a thing of the past. To ease
+   the plug-in management, it is better to install just one of them - a
+   <emphasis>plug-in manager</emphasis>. There are several plug-in managers,
+   some of which even take care of parallel plugin installation and online
+   updating. The most popular are vim-plug, Vundle, or NeoBundle.
+  </para>
  </sect1>
 </chapter>
