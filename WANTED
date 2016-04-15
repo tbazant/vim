@@ -1,3 +1,5 @@
+- automatic xml:id's insertion, based on the parent element's ID + '.'
+- "tab completion" for xref targets: editor proposes IDs of possible xref tragets within the file 
 - possibility to fold/unfold elements (like sections etc.) for better overview
 - possibility to integrate daps-spell (for on-the-fly spellchecking within the editor), 
   this is, for example, possible in jEdit, see 
@@ -6,4 +8,3 @@
    (according to the DTD or Schema) can be inserted at that place
 - "tab completion" for entities: type '&' and the editor gives you a list of available 
   entities that have been defined
-- "tab completion" for xref targets: editor proposes IDs of possible xref tragets within the file 
