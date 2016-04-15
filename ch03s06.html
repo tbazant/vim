@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>DocBook Snippet Macros</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.0" /><link rel="home" href="index.html" title="Light on Vim" /><link rel="up" href="cha.vim.xml.html" title="Chapter 3. Editing XML/DocBook Files" /><link rel="prev" href="ch03s05.html" title="On-the-fly Spell-Checking" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">DocBook Snippet Macros</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s05.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Editing XML/DocBook Files</th><td width="20%" align="right"> </td></tr></table><hr /></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1354"></a>DocBook Snippet Macros</h2></div></div></div><p>
+   In DocBook, many markup structures repeat very often over the text. To
+   have shortcuts for inserting frequently inserted snippets is very
+   convenient and saves a lot of writing time.
+  </p><p>
+   That is why I introduced a separate configuration file
+   <code class="filename">docbk_tpl.vim</code> that contains the macros for frequent
+   DocBook snippets. Just place it in the <code class="filename">/templates</code>
+   subdirectory and insert the following line in <code class="filename">~/.vimrc</code>:
+  </p><pre class="screen">" load docbook templates
+autocmd FileType xml,docbk source ~/.vim/templates/docbk_tpl.vim</pre></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="cha.vim.xml.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top">On-the-fly Spell-Checking </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
