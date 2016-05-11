@@ -235,8 +235,7 @@ para|
 <screen>&lt;para&gt;
     |
 &lt;/para&gt;</screen>
-        </entry>
-        <entry>when the word is on its own line, makes a pair of tags out
+<entry>when the word is on its own line, makes a pair of tags out
          of the preceding word, inserts newline between the tags,
          and puts the cursor on the blank line</entry>
        </row>
@@ -587,7 +586,7 @@ para2&lt;/para&gt;</screen>
    <step>
     <para>
      Download
-     <link xlink:href="/http://www.vim.org/scripts/download_script.php?src_id=5612">dtd2vim</link>
+     <link xlink:href="http://www.vim.org/scripts/download_script.php?src_id=5612">dtd2vim</link>
      and run <command>perl dtd2vim docbook.dtd docbook5</command>. The
      script creates the <filename>docbook5.vim</filename> file.
     </para>
