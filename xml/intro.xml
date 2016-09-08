@@ -6,7 +6,59 @@
 ]>
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="cha.vim.intro">
  <title>Making &vi; Comfortable</title>
- <para></para>
+ <para>&vi; Cheat Sheet</para>
+ <screen>
+Basic editing
+-------------
+i - insert before a character
+a - append after a character
+o - insert new line below
+I - insert at the line start
+A - append at the line end
+O - insert a new line above
+
+Moving around
+-------------
+w - beginning of the next word
+b - beginning of the previous word
+e - end of the next word
+$ - end of the line
+^ - first non-blank character of the line
+0 - beginning of the line
+fx - search the next 'x' character in the line, stops at the character
+Fy - search the previous 'y' -||- 
+tx - search the next 'x' character in the line, stops before the character
+Ty - search the next 'y' character in the line, stops after the character
+; - repeat the last f or F or t or T command
+, - -||- in the other direction
+% - moves to the matching parenthesis
+gg - beginning of the document
+nG - go to the line number n
+G - go to the end of the document
+n% - go to the n percent of the document
+H - go to the first line of the screen
+M - go to the middle of the screen
+L - go to the last line of the screen
+
+Scrolling around
+----------------
+CTRL-U - scroll 1/2 screen up
+CTRL-D - scroll 1/2 screen down
+CTRL-E - scroll one line up
+CTRL-Y - scroll one line down
+CTRL-F - scroll one screen forward
+CTRL-B - scroll one screen backward
+zt - moves the current line to the top of the screen
+zb - moves the current line to the bottom of the screen
+zz - moves the current line to the center of the screen
+:set scrolloff=n - leaves the context of n lines around the current line
+
+Getting oriented
+----------------
+CTRL-G - shows details about where you are in which file
+:set number - shows line numbers
+:set ruler - shows status line
+ </screen>
  <sect1 xml:id="vim.intro.vimrc">
   <title>Useful &vi; Settings</title>
 
