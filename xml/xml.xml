@@ -7,8 +7,8 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="cha.vim.xml">
  <title>Editing XML/DocBook Files</title>
  <para>
-  First, turn on default capabilities for XML and DocBook file types, such
-  as indenting and tag completion, by inserting the following line into your
+  First, turn on default capabilities for XML and DocBook file types, such as
+  indenting and tag completion, by inserting the following line into your
   &vimrc;:
  </para>
 <screen>autocmd FileType xml,docbk set omnifunc=xmlcomplete#CompleteTags</screen>
@@ -16,27 +16,26 @@
   <title>Moving Around the Tags</title>
 
   <para>
-   When editing an XML document, it is often useful to move and manipulate
-   the text in the context of the XML tags. For example to erase the text
-   the cursor is currently at, including the surrounding tags. Or to copy
-   the inner text from the tag under cursor.
+   When editing an XML document, it is often useful to move and manipulate the
+   text in the context of the XML tags. For example to erase the text the
+   cursor is currently at, including the surrounding tags. Or to copy the inner
+   text from the tag under cursor.
   </para>
 
   <sect2>
    <title>Text Objects</title>
    <para>
-    &vi; knows about <emphasis>text objects</emphasis>. A text object is a
-    part of text, such as word, sentence, block (block of text between
-    brackets), or paragraph. You define them by pressing
-    <literal>w</literal>, <literal>s</literal>, <literal>b</literal>, or
-    <literal>p</literal>. &vi; knows about one text object related
-    specifically to markup languages - a tag. A tag corresponds to a pair
-    HTML/XML element.
+    &vi; knows about <emphasis>text objects</emphasis>. A text object is a part
+    of text, such as word, sentence, block (block of text between brackets), or
+    paragraph. You define them by pressing <literal>w</literal>,
+    <literal>s</literal>, <literal>b</literal>, or <literal>p</literal>. &vi;
+    knows about one text object related specifically to markup languages - a
+    tag. A tag corresponds to a pair HTML/XML element.
    </para>
    <para>
     &vi; distinguishes between the inner part of a tag, and the whole tag
-    including the surrounding markup. &vi; can also select a text enclosed
-    in quotes, or jump the cursor between left or right sharp brackets. Get
+    including the surrounding markup. &vi; can also select a text enclosed in
+    quotes, or jump the cursor between left or right sharp brackets. Get
     inspired by the following few useful examples:
    </para>
    <informaltable>
@@ -120,9 +119,9 @@
   <title>xml.vim Plugin</title>
 
   <para>
-   The <literal>xml.vim</literal> plugin adds extended functionality to
-   editing XML files, such as auto-closing tags, matching the beginning or
-   end of a tag, or folding tags or comments.
+   The <literal>xml.vim</literal> plugin adds extended functionality to editing
+   XML files, such as auto-closing tags, matching the beginning or end of a
+   tag, or folding tags or comments.
   </para>
 
   <sect2>
@@ -234,8 +233,9 @@ para|
         <entry>
 <screen>&lt;para&gt;
     |
-&lt;/para&gt;</screen>
-<entry>when the word is on its own line, makes a pair of tags out
+    &lt;/para&gt;</screen>
+        </entry>
+        <entry>when the word is on its own line, makes a pair of tags out
          of the preceding word, inserts newline between the tags,
          and puts the cursor on the blank line</entry>
        </row>
@@ -561,9 +561,9 @@ para2&lt;/para&gt;</screen>
 
   <para>
    &vi; can help you autocomplete tags based on the supplied DTD. First you
-   have to obtain the DTD definition file for the XML subset (such as
-   DocBook) you want to use, the convert it to &vi; compatible format, and
-   the let &vi; know which file to load.
+   have to obtain the DTD definition file for the XML subset (such as DocBook)
+   you want to use, the convert it to &vi; compatible format, and the let &vi;
+   know which file to load.
   </para>
 
   <procedure>
@@ -578,8 +578,8 @@ para2&lt;/para&gt;</screen>
    </step>
    <step>
     <para>
-     Download the DTD file you want to use with &vi;. For example, DocBook5
-     DTD can be found at
+     Download the DTD file you want to use with &vi;. For example, DocBook5 DTD
+     can be found at
      <link xlink:href="http://docbook.org/xml/5.0/dtd/docbook.dtd"/>.
     </para>
    </step>
@@ -587,8 +587,8 @@ para2&lt;/para&gt;</screen>
     <para>
      Download
      <link xlink:href="http://www.vim.org/scripts/download_script.php?src_id=5612">dtd2vim</link>
-     and run <command>perl dtd2vim docbook.dtd docbook5</command>. The
-     script creates the <filename>docbook5.vim</filename> file.
+     and run <command>perl dtd2vim docbook.dtd docbook5</command>. The script
+     creates the <filename>docbook5.vim</filename> file.
     </para>
    </step>
    <step>
@@ -607,13 +607,13 @@ para2&lt;/para&gt;</screen>
    <step>
     <para>
      To have &vi; autocomplete the tag for you, start typing it with the
-     opening sharp bracket <literal>&lt;</literal> - you can optionally add
-     a few initial characters to make the suggestion list smaller - and then
+     opening sharp bracket <literal>&lt;</literal> - you can optionally add a
+     few initial characters to make the suggestion list smaller - and then
      press the default omni-completion shortcut
      <menuchoice><guimenu>CTRL</guimenu><guimenu>x</guimenu>
-     <guimenu>CTRL</guimenu><guimenu>o</guimenu></menuchoice>. &vi; offers
-     you a list of possible choices. Select one and press
-     <literal>&gt;</literal> to finish the tag.
+     <guimenu>CTRL</guimenu><guimenu>o</guimenu></menuchoice>. &vi; offers you
+     a list of possible choices. Select one and press <literal>&gt;</literal>
+     to finish the tag.
     </para>
     <tip>
      <para>
@@ -635,33 +635,32 @@ para2&lt;/para&gt;</screen>
   <title>Auto-completing XML Entities</title>
 
   <para>
-   If your XML entities are included in the file you are just editing, &vi;
-   can auto-complete their names for you - just write the
+   If your XML entities are included in the file you are just editing, &vi; can
+   auto-complete their names for you - just write the
    initial<literal>&amp;</literal> and press the omni-completion shortcut
-   (<menuchoice><guimenu>CTRL</guimenu><guimenu>SPACE</guimenu></menuchoice>
-   if you followed me recently).
+   (<menuchoice><guimenu>CTRL</guimenu><guimenu>SPACE</guimenu></menuchoice> if
+   you followed me recently).
   </para>
 
   <para>
-   If XML entities are included from other file, &vi; cannot see it. You
-   have to convert the entity file into <literal>.vim</literal> format and
-   include it into the <literal>vimxmlentities</literal> option in the
-   current &vi; DTD file, such as
-   <filename>~/.vim/autoload/xml/docbook5.vim</filename>.
+   If XML entities are included from other file, &vi; cannot see it. You have
+   to convert the entity file into <literal>.vim</literal> format and include
+   it into the <literal>vimxmlentities</literal> option in the current &vi; DTD
+   file, such as <filename>~/.vim/autoload/xml/docbook5.vim</filename>.
   </para>
 
   <para>
    To ease this process, I included the
-   <command>update_docbook_entities.pl</command> script. It takes your
-   custom entity file as a first argument, and the DTD .vim file as a second
-   argument. It extracts found entities, converts them into &vi;
-   understandable format, and adds them into the custom DTD file, such as
+   <command>update_docbook_entities.pl</command> script. It takes your custom
+   entity file as a first argument, and the DTD .vim file as a second argument.
+   It extracts found entities, converts them into &vi; understandable format,
+   and adds them into the custom DTD file, such as
    <filename>docbook5.vim</filename>.
   </para>
 
   <para>
-   To add a shortcut to this script to &vi;, add (and customized) this line
-   to your &vimrc; file:
+   To add a shortcut to this script to &vi;, add (and customized) this line to
+   your &vimrc; file:
   </para>
 
 <screen>nnoremap &lt;silent> _e :!update_docbook_entities.pl xml/entity-decl.ent ~/.vim/autoload/xml/docbook5.vim&lt;CR>&lt;CR></screen>
@@ -709,8 +708,8 @@ para2&lt;/para&gt;</screen>
   <sect2>
    <title>Highlighting Style and Colors</title>
    <para>
-    By default, &vi; uses the whole cursor block to mark misspelled words.
-    To make it underline them only, and color them with red, enter
+    By default, &vi; uses the whole cursor block to mark misspelled words. To
+    make it underline them only, and color them with red, enter
    </para>
 <screen>:highlight SpellBad cterm=underline ctermfg=red ctermbg=none</screen>
   </sect2>
@@ -718,9 +717,9 @@ para2&lt;/para&gt;</screen>
   <sect2>
    <title>Import Foreign Vocabulary</title>
    <para>
-    &vi; uses its own language related spell checker dictionary. This
-    section helps you use your own custom dictionary (originally an Aspell
-    format) and turn it into &vi; spelling wordlist.
+    &vi; uses its own language related spell checker dictionary. This section
+    helps you use your own custom dictionary (originally an Aspell format) and
+    turn it into &vi; spelling wordlist.
    </para>
    <procedure>
     <step>
@@ -755,9 +754,9 @@ para2&lt;/para&gt;</screen>
   <title>DocBook Snippet Macros</title>
 
   <para>
-   In DocBook, many markup structures repeat very often over the text. To
-   have shortcuts for inserting frequently inserted snippets is very
-   convenient and saves a lot of writing time.
+   In DocBook, many markup structures repeat very often over the text. To have
+   shortcuts for inserting frequently inserted snippets is very convenient and
+   saves a lot of writing time.
   </para>
 
   <para>
