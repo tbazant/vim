@@ -58,6 +58,56 @@ Getting oriented
 CTRL-G - shows details about where you are in which file
 :set number - shows line numbers
 :set ruler - shows status line
+
+Searching
+---------
+/string - forward search
+?string - backward -||-
+n - repeats forward search
+N - repeats the search in the reverse direction
+:set ignorecase = search regardless of the case
+* - search the next occurrence of the word under the cursor
+# - search the previous -||-
+:set hlsearch - highlights the search matches
+:nohlsearch - disables the existing highlighting
+
+
+Search patterns
+---------------
+^ - beginning of a line
+$ - end of a line
+. - any single character
+\. - matches a dot
+
+Jumps
+-----
+`` - go back where you came from before the jump
+CTRL-O - jump to older positions
+CTRL-I - jump back to newer positions
+:jumps - list of positions you jumped to
+
+Marks
+-----
+ma - create a mark 'a'
+`a - jump to the mark 'a'
+:marks - list of existing marks
+
+
+Editing
+-------
+dw - deletes a word
+cw - deletes a word and leaves the insert mode
+dd - deletes a line
+cc - changes a line
+x =dl - delete the character under the cursor
+X = dh - delete the character left to the cursor
+D = d$ - delete to the end of the line
+C = c$ - change to the end of the line
+s = cl - change one character
+S = cc - change a line
+ra - replaces the character under the cursor with 'a'
+. = repeats the last change
+
  </screen>
  <sect1 xml:id="vim.intro.vimrc">
   <title>Useful &vi; Settings</title>
