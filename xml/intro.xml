@@ -71,7 +71,6 @@ N - repeats the search in the reverse direction
 :set hlsearch - highlights the search matches
 :nohlsearch - disables the existing highlighting
 
-
 Search patterns
 ---------------
 ^ - beginning of a line
@@ -92,21 +91,20 @@ ma - create a mark 'a'
 `a - jump to the mark 'a'
 :marks - list of existing marks
 
-
 Editing
 -------
 dw - deletes a word
 cw - deletes a word and leaves the insert mode
 dd - deletes a line
 cc - changes a line
-x =dl - delete the character under the cursor
+x = dl - delete the character under the cursor
 X = dh - delete the character left to the cursor
 D = d$ - delete to the end of the line
 C = c$ - change to the end of the line
 s = cl - change one character
 S = cc - change a line
 ra - replaces the character under the cursor with 'a'
-. = repeats the last change
+. - repeats the last change
 
  </screen>
  <sect1 xml:id="vim.intro.vimrc">
