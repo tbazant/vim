@@ -1,0 +1,706 @@
+[[cha.vim.xml]]
+Editing XML/DocBook Files
+-------------------------
+
+First, turn on default capabilities for XML and DocBook file types, such
+as indenting and tag completion, by inserting the following line into
+your VIMRC:
+
+....
+autocmd FileType xml,docbk set omnifunc=xmlcomplete#CompleteTags
+....
+
+Moving Around the Tags
+----------------------
+
+When editing an XML document, it is often useful to move and manipulate
+the text in the context of the XML tags. For example to erase the text
+the cursor is currently at, including the surrounding tags. Or to copy
+the inner text from the tag under cursor.
+
+Text Objects
+~~~~~~~~~~~~
+
+VI knows about __text objects__. A text object is a part of text, such
+as word, sentence, block (block of text between brackets), or paragraph.
+You define them by pressing `w`, `s`, `b`, or `p`. VI knows about one
+text object related specifically to markup languages - a tag. A tag
+corresponds to a pair HTML/XML element.
+
+VI distinguishes between the inner part of a tag, and the whole tag
+including the surrounding markup. VI can also select a text enclosed in
+quotes, or jump the cursor between left or right sharp brackets. Get
+inspired by the following few useful examples:
+
+[width="100%",cols="40%,60%",options="header",]
+|=======================================================================
+|command |how to remember |description
+|`it` |inner tag |text placed inside XML element
+
+|`at` |all tag |same as `it` + the pair of surrounding tags
+
+|`2it` |2 x inner tag |select the inner text of the parent element
+(including the current tag)
+
+|`2at` |2 x all tag |select the whole parent element (including the
+current and the parent tags)
+
+|`f>` |find > |selects the text to the end of the closing tag, including
+'>'
+
+|`t<` |find to > |selects the text to the end of the closing tag,
+without '<'
+
+|`F<` |find < backward |selects the text from the beginning of the tag,
+including '<'
+
+|`T<` |find to < backward |selects the text from the beginning of the
+tag, without '<'
+
+|`a"` |a string |selects the text including the surrounding quotes, such
+as XML attribute
+
+|`i"` |a string |selects the text without the surrounding quotes, such
+as text of an XML attribute
+|=======================================================================
+
+xml.vim Plugin
+--------------
+
+The `xml.vim` plugin adds extended functionality to editing XML files,
+such as auto-closing tags, matching the beginning or end of a tag, or
+folding tags or comments.
+
+Installation
+~~~~~~~~~~~~
+
+To install the `xml.vim` plugin, follow these steps:
+
+Download latest version of the `xml.vim` plugin from
+https://github.com/vim-scripts/xml.vim.
+
+Unzip the file to the `~/.vim/ftplugin/` directory.
+
+Because VI uses other default XML features we want to use, edit
+`~/.vim/ftplugin/xml.vim` and comment (`"`) the line
+
+....
+b:did_ftplugin = 1
+....
+
+Restart VI. Now you can access the plugin's help by entering
+
+....
+:help xml-plugin
+....
+
+Added Value
+~~~~~~~~~~~
+
+The following tables show goodies of `xml.vim`. Notice that '|' stands
+for the current cursor position.
+
+Enhancements for the Insert Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[width="100%",cols="30%,28%,42%",options="header",]
+|=======================================================================
+|mapping |when |result |description
+a|
+....
+>
+....
+
+ a|
+....
+<para|
+....
+
+ a|
+....
+<para>|</para>
+....
+
+ |closes the current tag and puts the cursor between the opening and
+ending tag
+
+a|
+....
+>>
+....
+
+ a|
+....
+<para|
+....
+
+ a|
+....
+<para>
+    |
+</para>
+....
+
+ |closes the current tag, inserts newline between the tags, and puts the
+cursor on the blank line
+
+a|
+....
+;;
+....
+
+ a|
+....
+para|
+....
+
+ a|
+....
+<para>|</para>
+....
+
+ |makes a pair of tags out of the preceding word, and puts the cursor
+between them
+
+a|
+....
+;;
+....
+
+ a|
+....
+para|
+....
+
+ a|
+....
+<para>
+    |
+    </para>
+....
+
+ |when the word is on its own line, makes a pair of tags out of the
+preceding word, inserts newline between the tags, and puts the cursor on
+the blank line
+|=======================================================================
+
+'[' and ']' Mappings for the Command Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+*Tip*
+
+Some of the following mappings use <localleader> key before the mapping
+itself. It is backslash '`\`' by default. You can, however, change it to
+any other key in your VIMRC file. For example to change it to a comma
+'`,`', insert the following line
+
+....
+let maplocalleader = ","
+....
+
+and run `:source ~/.vimrc` to make it effective.
+
+From now on, I assume you have re-mapped the <localleader> to a comma
+character `,` :-)
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+[cols=",,,",options="header",]
+|=======================================================================
+|mapping |when |result |description
+a|
+....
+,]
+....
+
+ a|
+....
+<!-- some commented | text -->
+....
+
+ |the same text no longer commented| |removes <!-- --> delimiters and
+puts the cursor at the end of the text
+
+a|
+....
+,}
+....
+
+ a|
+....
+<!-- some commented | text -->
+....
+
+ || |removes the whole <!-- --> section
+
+a|
+....
+[[
+....
+
+ |go to the previous opening tag
+
+a|
+....
+]]
+....
+
+ |go to the next opening tag
+
+a|
+....
+[]
+....
+
+ |go to the previous closing tag
+
+a|
+....
+][
+....
+
+ |go to the next closing tag
+
+a|
+....
+["
+....
+
+ |go to the next comment
+
+a|
+....
+]"
+....
+
+ |go to the previous comment
+
+a|
+....
+,5
+....
+
+or
+
+....
+,%
+....
+
+ |jump to the beginning of the matching opening/closing tag
+|=======================================================================
+
+Advanced Editing Techniques
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[cols=",,,",options="header",]
+|=======================================================================
+|mapping |when |result |description
+a|
+....
+,c
+....
+
+ |rename a tag
+
+a|
+....
+,C
+....
+
+ |rename a tag and ask for its attributes
+
+a|
+....
+,d
+....
+
+ |<pa|ra>outer <emphasis>inner</emphasis> outer<para> |outer
+<emphasis>inner</emphasis> outer |removes the surrounding tag
+
+a|
+....
+,D
+....
+
+ a|
+....
+<para>outer
+<em|phasis>inner</emphasis>
+outer<para>
+....
+
+ a|
+....
+<para>
+outer outer
+<para>
+....
+
+ |removes the surrounding tag and its content
+
+a|
+....
+,e
+....
+
+ a|
+....
+<para>some text|
+....
+
+ a|
+....
+<para>some text<para>
+....
+
+ |provides a closing tag for the preceding unclosed opening tag
+
+a|
+....
+,s
+....
+
+ a|
+....
+|some text</para>
+....
+
+ a|
+....
+<para>some text<para>
+....
+
+ |provides an opening tag for the following unopened closing tag
+
+a|
+....
+,f
+....
+
+ a|
+....
+<pa|ra>
+ line1
+ line2
+ line3
+ </para>
+....
+
+ a|
+....
++-- 5 lines: <para>---------- 
+....
+
+ |folds the tag under the cursor
+
+a|
+....
+,F
+....
+
+ |folds all tags named as the one under the cursor; if there is no tag
+under the cursor, you will be asked for the tag name
+
+a|
+....
+,j
+....
+
+ a|
+....
+<para>para1</p|ara>
+<para>para2</para>
+....
+
+ a|
+....
+<para>para1|
+para2</para>
+....
+
+ |joins two adjacent elements of the same type, joining and removing the
+tag under the cursor
+
+a|
+....
+,l
+....
+
+ a|
+....
+text
+....
+
+ a|
+....
+<listitem>
+ <para>text</para>
+<listitem>
+....
+
+ |surrounds a visually defined (with `v`) block with <listitem><para>
+
+a|
+....
+,o
+....
+
+ a|
+....
+<pa|ra>text</para>
+....
+
+ a|
+....
+<para>
+<entry>text</entry>
+</para>
+....
+
+ |surround the inner text of the current tag with a specified one which
+you are asked for, <entry/> in the example
+
+a|
+....
+,O
+....
+
+ a|
+....
+<pa|ra>text</para>
+....
+
+ a|
+....
+<entry>
+ <para>text</para>
+</entry>
+....
+
+ |surrounds the tag under the cursor with a specified one which you are
+asked for, <entry/> in the example
+
+a|
+....
+,>
+....
+
+ |indents the current element and all its content
+
+a|
+....
+,<
+....
+
+ |unindents the current element and all its content
+
+a|
+....
+,<
+....
+
+ |some text| |<!-- some text --> |comments out visually selected text
+block
+
+a|
+....
+,v
+....
+
+ a|
+....
+some text
+....
+
+ a|
+....
+<para>
+ some text
+</para>
+....
+
+ |surrounds the visually selected text block with a tag which you are
+asked for, <para/> in the example
+
+a|
+....
+,5
+....
+
+or
+
+....
+,%
+....
+
+ |extends the visual selection up to the matching tag
+|=======================================================================
+
+DTD Support
+-----------
+
+VI can help you autocomplete tags based on the supplied DTD. First you
+have to obtain the DTD definition file for the XML subset (such as
+DocBook) you want to use, the convert it to VI compatible format, and
+the let VI know which file to load.
+
+Download the
+http://search.cpan.org/CPAN/authors/id/E/EH/EHOOD/perlSGML.1997Sep18.tar.gz[perlSGML]
+package, `unzip` it, `cd` to the unpacked directory
+(`perlSGML.1997Sep18/`, run `perl install.me`, and answer to the
+questions.
+
+Download the DTD file you want to use with VI. For example, DocBook5 DTD
+can be found at http://docbook.org/xml/5.0/dtd/docbook.dtd.
+
+Download
+http://www.vim.org/scripts/download_script.php?src_id=5612[dtd2vim] and
+run `perl dtd2vim docbook.dtd docbook5`. The script creates the
+`docbook5.vim` file.
+
+Move `docbook5.vim` to `~/.vim/autoload/xml/docbook5.vim`.
+
+Restart VI and open some DocBook file. To tell VI to use the previously
+converted `docbook5.vim` file, set `:XMLns docbook5` from within the VI
+command mode.
+
+To have VI autocomplete the tag for you, start typing it with the
+opening sharp bracket `<` - you can optionally add a few initial
+characters to make the suggestion list smaller - and then press the
+default omni-completion shortcut CTRL > x > CTRL > o. VI offers you a
+list of possible choices. Select one and press `>` to finish the tag.
+
+______________________________________________________________________________________________________________________________________________________________________
+*Tip*
+
+Because CTRL > x > CTRL > o is awkward, I suggest you to remap it in
+your VIMRC to for example CTRL > SPACE adding the following lines for
+XML and DocBook file types:
+
+....
+autocmd FileType xml,docbk imap <C-@> <C-X><C-O>
+....
+
+Then restart VI and enjoy your wild editing experience :-)
+______________________________________________________________________________________________________________________________________________________________________
+
+Auto-completing XML Entities
+----------------------------
+
+If your XML entities are included in the file you are just editing, VI
+can auto-complete their names for you - just write the initial`&` and
+press the omni-completion shortcut (CTRL > SPACE if you followed me
+recently).
+
+If XML entities are included from other file, VI cannot see it. You have
+to convert the entity file into `.vim` format and include it into the
+`vimxmlentities` option in the current VI DTD file, such as
+`~/.vim/autoload/xml/docbook5.vim`.
+
+To ease this process, I included the `update_docbook_entities.pl`
+script. It takes your custom entity file as a first argument, and the
+DTD .vim file as a second argument. It extracts found entities, converts
+them into VI understandable format, and adds them into the custom DTD
+file, such as `docbook5.vim`.
+
+To add a shortcut to this script to VI, add (and customized) this line
+to your VIMRC file:
+
+....
+nnoremap <silent> _e :!update_docbook_entities.pl xml/entity-decl.ent ~/.vim/autoload/xml/docbook5.vim<CR><CR>
+....
+
+This line ensuresMDASHassuming that you moved
+`update_docbook_entities.pl` to $PATHMDASHthat after pressing _e, the
+entities found in the `xml/entity-decl.ent` file will be added to
+`~/.vim/autoload/xml/docbook5.vim`.
+
+On-the-fly Spell-Checking
+-------------------------
+
+VI has a built-in spell checker since version 7. To activate it on the
+current file, enter
+
+....
+:set spell spelllang=en
+....
+
+on the VI command line, or put it in your VIMRC file:
+
+....
+autocmd FileType xml,docbk set spell spelllang=en
+....
+
+Highlight Content, Not the Markup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The problem is that it highlights misspelled words included in XML tags
+instead of their content. To make VI highlight spelling errors in the
+text, enter
+
+....
+:syntax spell toplevel
+....
+
+To make `:syntax spell toplevel` start automatically at VI start, create
+the `~/.vim/after/syntax/xml.vim` file and add the following line:
+
+....
+syntax spell toplevel
+....
+
+Highlighting Style and Colors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, VI uses the whole cursor block to mark misspelled words. To
+make it underline them only, and color them with red, enter
+
+....
+:highlight SpellBad cterm=underline ctermfg=red ctermbg=none
+....
+
+Import Foreign Vocabulary
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+VI uses its own language related spell checker dictionary. This section
+helps you use your own custom dictionary (originally an Aspell format)
+and turn it into VI spelling wordlist.
+
+Get a custom list of words, each word on a separate line. For Aspell
+dictionary `suse_aspell.rws` residing in the `/usr/share/daps/lib`
+directory, use the following command:
+
+....
+aspell dump master -l suse_aspell.rws --dict-dir=/usr/share/daps/lib > ~/.vim/spell/suse.utf-8.add
+....
+
+The wordlist will be saved to `.vim/spell/suse.utf-8.add` in your home
+directory.
+
+Convert the new wordlist into the VI compatible format.
+
+....
+:mkspell! ~/.vim/spell/suse.utf-8.add
+....
+
+Specify the new dictionary for use with VI.
+
+....
+:set spellfile=~/.vim/spell/suse.utf-8.add
+....
+
+DocBook Snippet Macros
+----------------------
+
+In DocBook, many markup structures repeat very often over the text. To
+have shortcuts for inserting frequently inserted snippets is very
+convenient and saves a lot of writing time.
+
+That is why I introduced a separate configuration file `docbk_tpl.vim`
+that contains the macros for frequent DocBook snippets. Just place it in
+the `/templates` subdirectory and insert the following line in VIMRC:
+
+....
+" load docbook templates
+autocmd FileType xml,docbk source ~/.vim/templates/docbk_tpl.vim
+....

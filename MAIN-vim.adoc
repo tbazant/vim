@@ -1,0 +1,6 @@
+  = Light on &vi;
+Tomáš Bažant
+include::intro.adoc[]
+include::vimplug.adoc[]
+include::fugitive.adoc[]
+include::xml.adoc[]
