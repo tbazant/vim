@@ -1,5 +1,5 @@
 [[book.vim]]
-= Light on &vi;
+= Light on Vim
 Tomáš Bažant
 
 link:intro.adoc[Introduction]
