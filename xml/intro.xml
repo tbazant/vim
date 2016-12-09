@@ -105,6 +105,13 @@ s = cl - change one character
 S = cc - change a line
 ra - replaces the character under the cursor with 'a'
 . - repeats the last change
+~ - changes the case of the character under the cursor
+
+Editing Multiple files
+----------------------
+mA - capital marks are global across more files
+
+
 
  </screen>
  <sect1 xml:id="vim.intro.vimrc">
