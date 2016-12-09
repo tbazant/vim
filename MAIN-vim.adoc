@@ -1,3 +1,4 @@
+[[book.vim]]
 = Light on &vi;
 Tomáš Bažant
 
