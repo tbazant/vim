@@ -4,8 +4,8 @@ Tomáš Bažant
 
 link:intro.adoc[Introduction]
 
-include::vimplug.adoc[]
+include::vimplug.adoc[Plugins]
 
-include::fugitive.adoc[]
+include::fugitive.adoc[Git in Vim]
 
-include::xml.adoc[]
+include::xml.adoc[XML editing]
