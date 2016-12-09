@@ -2,7 +2,7 @@
 = Light on &vi;
 Tomáš Bažant
 
-include::intro.adoc[]
+link:intro.adoc[]
 
 include::vimplug.adoc[]
 
