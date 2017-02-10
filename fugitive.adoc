@@ -1,3 +1,0 @@
-[[cha.vim.fugitive]]
-Fugitive: Wrapping around Git
------------------------------

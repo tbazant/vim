@@ -1,3 +1,0 @@
-[[cha.vim.vimplug]]
-vim-plug: Plug-ins Made Easy
-----------------------------
